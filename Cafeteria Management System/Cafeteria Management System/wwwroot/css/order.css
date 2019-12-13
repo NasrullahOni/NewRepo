@@ -1,0 +1,126 @@
+﻿:root {
+    --overlay-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+   
+    height: 300% !important;
+    background: url("https://media.timeout.com/images/105239239/image.jpg") 0 -500px no-repeat;
+    z-index: 0;
+} .nested{
+   display:grid;
+   grid-template-columns:repeat(2,1fr);
+   grid-gap:1em;
+   grid-auto-rows:auto;
+   
+
+}
+  .wrapper .nested .order{
+      margin-left:50%;
+  }
+
+.text{
+    color:white;
+    font-family:'Global Monospace';
+    font-size:20px;
+    text-align:center;
+    text-justify:auto;
+
+
+}
+
+
+.loginbox h1{
+    color:white;
+    padding:20px;
+    text-align:center;
+    text-justify:inter-cluster;
+}
+  
+/*.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    height:150%
+  
+}
+
+.wrapper:first-child{
+    grid-column-start:1/2;
+   
+}
+
+    .wrapper:nth-child(2) {
+        grid-column-start: 2/2;
+    }*/
+.navbari ul li {
+    text-decoration:none;
+    color:white;
+}
+.navbari ul li a {
+    text-decoration: none;
+    color: white;
+}
+.form-container {
+    background:url("../img/Iyan.jpg") no-repeat ;
+    background-size:cover;
+    border-radius: 10px;
+     z-index: 4;
+    display: block;
+     width: 50%;
+    height:50%;
+    position: absolute;   
+    text-align: center;
+   display:none;
+   margin-right:30%;
+   margin-left:30%;
+    margin-top:-65%;
+}
+  
+
+.navbari {
+    top: 0;
+    position: fixed;
+    text-decoration: none;
+    z-index: 1;
+}
+
+    .navbari ul li {
+        font-size: 30px;
+        text-decoration: none;
+        padding: 30px;
+        display: inline;
+        font-family: Tangerine;
+    }
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        width:100%
+    }
+
+        .wrapper:first-child {
+            grid-column-start: 1/2;
+            height:100vh;
+            width:300%
+        }
+
+        .wrapper:nth-child(2) {
+            grid-column-start: 2/2;
+        }
+
+
+
+   
+
+  
+
+
+}

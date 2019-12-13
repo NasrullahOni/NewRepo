@@ -1,0 +1,103 @@
+﻿
+@inject IAppUser appuser;
+@inject IVendorRepo vend
+
+@{
+
+    Layout = "_VendorLayout";
+
+    var res = await appuser.GetUser();
+    var ans = res.Where(x => x.UserName == User.Identity.Name);
+    string final = ans.FirstOrDefault().Department;
+    string email = ans.FirstOrDefault().Email;
+
+    var GetIdasync = await vend.GetVendor();
+    var GetId = GetIdasync.Where(x => x.EmailAddress == email);
+    var selectId = GetId.FirstOrDefault().VendorId;
+
+    string Email = User.Identity.Name;
+
+}
+
+
+
+<style>
+    #showcase {
+        min-height: 400px;
+        background: url("../../img/Armani_Caffe_Dubai.jpg") no-repeat 0 -200px;
+        background-size: cover;
+        text-align: center;
+    }
+    .star{
+        font-family:'Microsoft YaHei UI';
+        font-style:oblique;
+        opacity:0.7;
+        color:orangered
+    }
+    .box img:hover{
+
+        transform:scale(1.5);
+
+    }
+    .show {
+        min-height: 400px;
+        background: url("../../img/pic1.jpg") no-repeat 0 -300px;
+        background-size: cover;
+        text-align: center;
+    }
+
+    .segment {
+        min-height: 300px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 10px;
+    }
+</style>
+<section id="showcase">
+    <div class="container">
+        @*<h1>   <span style="color:darkgoldenrod"><em>THE NEW WAY</em></span> </h1>*@
+        <button style="margin-top:20%" type="submit" class="sign">  <a asp-action="GetOrder" asp-controller="Vendor" asp-route-email="@Email">  View Order </a></button>
+</div>
+</section>
+
+
+<div class=" events">
+    <h2> HAVE A TASTE <img src="~/img/tasty.png" />  </h2>
+</div>
+<section class=" show ">
+    <div>
+
+
+    </div>
+</section>
+
+<section id="boxes">
+    <div class="container">
+        <div class="box">
+            <img src="~/img/Eba.jpg" style="border-radius:30px">
+            <h3> EBA </h3>
+
+            <p class="star boxy">
+                 Eat This With Ewedu and You will Never Regret it
+            </p>
+
+        </div>
+
+        <div class="box">
+            <img src="~/img/EfoSoup.jpg" style="border-radius:30px" alt="logo">
+            <h3> AMALA</h3>
+            <p class="star boxy">This Surely Goes with Gbegiri. Hmmmm!!! Yummmy </p>
+        </div>
+
+
+        <div class="box">
+            <img src="~/img/Ofada.jpg"style="border-radius:30px">
+            <h3> Ofada Rice</h3>
+            <p class=" star boxy"> We Dont Joke with this, especially with Fried Stew </p>
+
+        </div>
+
+    </div>
+</section>
+
+

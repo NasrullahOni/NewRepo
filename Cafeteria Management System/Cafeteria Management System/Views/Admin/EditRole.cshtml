@@ -1,0 +1,178 @@
+﻿@model EditRole
+@{
+
+    Layout = "_AdminLayout";
+}
+
+
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Posts<small>Manage Blog Posts</small></h1>
+            </div>
+            <div class="col-md-2">
+                <div class="dropdown create">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Create Content
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a asp-controller="Admin" asp-action="AddVendor">Add Vendors</a></li>
+                        <li><a href="#">Add Post</a></li>
+                        <li><a href="#">Add User</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">Posts</li>
+        </ol>
+    </div>
+</section>
+
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="index.html" class="list-group-item active main-color-bg">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+                    </a>
+                    <a asp-action="AddVendor" asp-controller="Admin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> AddVendors</a>
+                    @*<a href="posts.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge">33</span></a>
+                    <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>*@
+                </div>
+
+                @*<div class="well">
+                    <h4>Disk Space Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                            60%
+                        </div>
+                    </div>
+                    <h4>Bandwidth Used </h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                            40%
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            <div class="col-md-9">
+                <!-- Website Overview -->
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <h3 class="panel-title">Vendors</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <h4 style="text-align:center;font-size:40px;" id="register"> Create Roles </h4>
+                        </div>
+                        <br>
+
+                        <h1>Edit Role</h1>
+                        <form method="post" asp-action="EditRole" asp-controller="Admin" class="mt-3">
+                            <div class="form-group row">
+                                <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Id" disabled class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="RoleName" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="RoleName" class="form-control">
+                                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <a asp-action="ListRoles" class="btn btn-primary">Cancel</a>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Users in this role</h3>
+                                </div>
+                                <div class="card-body">
+                                    @if (Model.Users==null)
+                                    {
+                                        foreach (var user in Model.Users)
+                                        {
+                                            <h5 class="card-title">@user</h5>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <h5 class="card-title">None at the moment</h5>
+                                    }
+                                </div>
+                                <div class="card-footer">
+                                    <a asp-action="EditUser" asp-controller="Admin"
+                                       asp-route-roleId="@Model.Id" class="btn btn-primary" style="width:auto">Add or Remove Users</a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modals -->
+<!-- Add Page -->
+<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Page</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Page Title</label>
+                        <input type="text" class="form-control" placeholder="Page Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Body</label>
+                        <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Published
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Tags</label>
+                        <input type="text" class="form-control" placeholder="Add Some Tags...">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <input type="text" class="form-control" placeholder="Add Meta Description...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

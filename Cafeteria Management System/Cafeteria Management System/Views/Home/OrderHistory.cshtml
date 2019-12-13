@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Order>
+
+
+@{ 
+
+
+}
+
+<style>
+
+    .contain {
+        padding-top: 70px;
+    }
+
+    table thead tr, table tbody tr {
+        border-style: solid;
+        border-color: Background;
+    }
+
+        table tbody tr td {
+        }
+</style>
+
+
+
+
+
+
+<div class="container contain">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.Any())
+            {
+
+                <table class=" table table-striped table-bordered table-hover" id="theTable">
+                    <thead>
+                        <tr>
+
+                            <th>Food</th>
+                            <th>OrderedByMe</th>
+
+                            <th>Vendor Name</th>
+
+                            <th>Date</th>
+                            <th>Accepted  </th>
+                            <th class="text text-center">Collected For Me  </th>
+                            <th>CheckedByMe</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        @foreach (var vend in Model)
+                        {
+                            string date = vend.Date.ToString();
+                            var split = date.Split(" ");
+                            var actualdate = split[0];
+
+                            <tr>
+
+                                <td>@vend.Food</td>
+                                <td >@vend.OrderedByMe </td>
+
+                                <td>@vend.VendorName </td>
+
+                                <td>@actualdate  </td>
+                                <td id="edit"> @vend.Accepted</td>
+                                <td> @vend.Collector</td>
+                                <td>
+                                    <input type="checkbox" name="box1" value="Checked" id="bill" /> <span id="boll"></span>
+                                    
+                                </td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+
+                </table>
+
+            }
+            else
+            { <h1> You Do not Have any records for now</h1>}
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    
+     var pick = document.querySelectorAll("#edit")
+
+    pick.forEach((a) => {
+        if (a.innerText == "Yes")
+        {
+            a.style.backgroundColor = "lightgreen"
+        }
+        else if (a.innerText == "No")
+        {
+            a.style.backgroundColor = "red"
+
+
+        } 
+
+    })
+
+    var sed = document.querySelectorAll("input")
+    var cog = document.querySelectorAll("span")
+
+
+
+
+        sed.addEventListener("click", function () {
+
+            
+        if (sed.checked == true)
+        {
+                cog.value = 
+                cog.innerHTML = 
+        }
+            
+        else if (sed.checked == false)
+        {
+            cog.value = 
+            cog.innerHTML =
+        }
+
+        })
+       
+
+            //var bod = document.querySelectorAll("td")
+            //bod.forEach((a)=>{
+
+            //   if(a.innerText== "No"){
+            //   	a.style.backgroundColor = "red"
+            //   }
+            //   else if(a.innerText=="Yes"){
+            //   	a.style.backgroundColor = "lightgreen"
+            </script>

@@ -1,0 +1,110 @@
+﻿
+@model Order;
+@{ 
+
+    var ans = Model.Date.ToString();
+    var res = ans.Split(" ");
+    var date = res[0];
+
+
+}
+
+
+
+
+
+
+
+
+
+<style>
+    
+    body{
+
+        background:url("../../img/FinerRest.jpg") 0 -200px   no-repeat;
+        background-size:cover;
+        position:fixed;
+
+
+    }
+    .confirm{
+        margin-top:50px;
+        margin-left:40%;
+    }
+   
+    .confirm .fred{
+        background: grey;
+        height:60%;
+        width: 70%;
+        margin-left:10%;
+        margin-right:50%;
+        margin-top:40px;
+        
+
+    }
+    .drip{
+        padding-top:30px;
+    }
+
+        .confirm .fred h3 {
+            padding: 5px;
+            color: black;
+            text-align: center;
+            font-family: Srisakdi;
+        }
+        .des{
+            padding-top:5px;
+        }
+
+    .nest{
+
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        grid-column-gap:7px;
+    }
+    
+</style>
+
+
+
+<div class="container confirm">
+   
+   
+    <div class="fred">
+        <div style="background:lightblue">
+            <h2 class="text text-center">THANK YOU!!</h2>
+            <h3 style="text-align:center; padding-left:2px"> Order Suscessful  <img style="height:30px;width:30px" src="../../img/tasty.png" /> </h3>
+        </div>
+            <hr />
+       
+        <div style="background-color:white" class="nest">
+            <div class="drip " >
+                <h3>StaffId :</h3>
+                <h3>StaffName :</h3>
+                <h3>FoodOrdered :</h3>
+                <h3>StaffDepartment :</h3>
+                <h3>Date :</h3>
+                <h3>OrderedByMe :</h3>
+                <h3>Collector:</h3>
+
+            </div>
+            <div style="grid-column:2/2; padding-left:3px" class="des">
+                <h3>@Model.StaffId</h3>
+                <h3>@Model.StaffName</h3>
+                <h3>@Model.Food</h3>
+                <h3>@Model.StaffDepartment</h3>
+                <h3>@date</h3>
+
+
+                <h3>@Model.OrderedByMe</h3>
+                <h3>@Model.Collector </h3>
+
+            </div>
+        </div>
+
+    </div>
+
+    
+    
+
+</div>

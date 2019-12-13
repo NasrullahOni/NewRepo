@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Foods>
+@{
+    Layout = "_VendorLayout";
+}
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    html, body {
+        height: 100%
+    }
+
+    footer {
+        height: 23%;
+    }
+
+    .drop {
+        margin-top: 40px;
+    }
+</style>
+
+<div class="drop container">
+    <button class="button_1"><a style="text-decoration:none; color:white" asp-action="AddFoods" asp-controller="Vendor">     Add Foods</a></button>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class=" table table-striped table-bordered table-hover" id="theTable">
+                <thead>
+                    <tr>
+                        
+                        <th>Food</th>
+                        <th>Type</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @foreach (var food in Model)
+                    {
+
+
+                        <tr>
+
+                            <td>@food.Food</td>
+                            <td>@food.Type</td>
+
+
+                            <td>
+
+
+                               
+                                <button id="rev"> @Html.ActionLink("Delete", "delGetAll", "Vendor", new { id = food.Id })</button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+
+            </table>
+
+
+
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,62 @@
+﻿@model Foods
+@inject IAppUser AppUser;
+@inject IVendorRepo Vendo;
+@inject IFoodsRepo Foods;
+
+@{
+    Layout = "_VendorLayout";
+
+    var getId = await AppUser.GetUser();
+    var des = getId.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+    var res = des.Email;
+    var ans = await Vendo.GetVendor();
+    var sed = ans.Where(x => x.EmailAddress == res).FirstOrDefault();
+    var final = sed.VendorId;
+
+    var getFood = Foods.GetFoods();
+
+}
+<style>
+    .drop {
+        margin-top: 40px;
+    }
+    footer{
+        position:fixed;
+        bottom:0;
+        width:100%
+    }
+</style>
+
+<div class="container drop">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-controller="Vendor" asp-action="AddFoods" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+               
+                <div class="form-group">
+                    <label asp-for="Food"></label>
+                    <input asp-for="Food" class="form-control small" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Type"></label>
+                    @*<input asp-for="Type" class="form-control small" />*@
+                    @Html.DropDownListFor(x => x.Type, new SelectList(getFood.Distinct(), "Type", "Type"), "Select Foods", new { @class = "form-control font-weight-bold", @id = "Type", @required = true })
+                </div>
+                <div class="form-group">
+                    <label asp-for="VendorId"></label>
+                    <input asp-for="VendorId" value="@final" class="form-control small" readonly />
+
+                </div>
+
+                <div class="card-footer">
+                    <input type="submit" value="AddFoods" class="btn btn-primary"
+                           style="width:auto" />
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+

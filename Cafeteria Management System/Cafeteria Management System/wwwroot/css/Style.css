@@ -1,0 +1,297 @@
+﻿body {
+    font: 15px/1.5 Arial Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+/*Global*/
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.button_1 {
+    height: 38px;
+    background: #e8491d;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+
+/*Header*/
+header {
+    background: #FF8F00;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+}
+
+
+    header a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+
+    header li {
+
+        display: inline;
+        padding: 0 20px 0 20px;
+    }
+
+    header #branding {
+        float: left;
+    }
+
+        header #branding h1 {
+            margin: 0;
+        }
+
+    header nav {
+        float: right;
+        margin-top: 10px;
+    }
+
+    header .highlights, header .current a {
+        color: #3F5866;
+        font-weight: bold;
+    }
+
+    header a:hover {
+        color: grey;
+        font-weight: bold;
+    }
+
+.dark {
+    padding: 15px;
+    background: #35424a;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/*showcase */
+
+.carousel-slide .carousel-inner 
+
+#showcase {
+    min-height: 400px;
+    background: url("../img/meetup4.jpg") no-repeat 0 -200px;
+    
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+    #showcase h1 {
+        margin-top: 100px;
+        font-size: 55px;
+        margin-bottom: 10px;
+    }
+
+    #showcase .sign {
+        border-radius: 3px;
+        width: 20%;
+        height: 45px;
+        font-weight: bold;
+        font-size: 25px;
+        background-color: #3F5866;
+    }
+
+    #showcase p {
+        font-size: 20px;
+    }
+
+#newsletter {
+    padding: 15px;
+    color: #ffffff;
+    background: #35424a;
+}
+
+
+#showcase .implement button {
+    margin-top: 15px;
+    margin-right: 20px;
+    width: 90px;
+    height: 40px;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+ul li button {
+    height: 40px;
+}
+
+    ul li button a {
+        text-decoration: none;
+        color: black
+    }
+
+
+
+#newsletter input[type="email"] {
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+    border: none;
+}
+
+.events h2 {
+    text-align: center;
+}
+
+#boxes {
+    margin-top: 20px;
+}
+
+.boxy {
+    border: grey solid 1px;
+}
+
+
+#boxes .box {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+}
+
+    #boxes .box img {
+        width: 300px;
+    }
+/*Article */
+
+#main-col {
+    float: none;
+    width: 65%;
+    margin: auto;
+}
+
+#main .form1 {
+    border-radius: 30px;
+    border-bottom: orange solid 1px;
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#showcase button a {
+    text-decoration: none;
+    color: white;
+}
+
+/*footer */
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #e8491d;
+    text-align: center;
+}
+
+
+textarea {
+    height: 80px;
+    width: 60%;
+}
+
+
+
+
+/*table {
+    width: 40em;
+    margin: 2em auto;
+}
+
+thead {
+    background: #000;
+    color: #fff;
+}
+
+td {
+    width: 10em;
+    padding: 0.3em;
+}
+
+tbody {
+    background: #ccc;
+}*/
+
+div.pager {
+    text-align: center;
+    margin: 1em 0;
+}
+
+    div.pager span {
+        display: inline-block;
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8;
+        text-align: center;
+        cursor: pointer;
+        background: #000;
+        color: #fff;
+        margin-right: 0.5em;
+    }
+
+        div.pager span.active {
+            background: #c00;
+        }
+
+
+@media(max-width:768px) {
+    header #branding, header nav, header nav li, #newsletter h1, #newsletter form {
+        float: none;
+        text-align: center;
+        width: 100%;
+    }
+
+        header nav li {
+            padding-left: 5px;
+        }
+
+    header {
+        padding-bottom: 20px;
+    }
+
+
+    #showcase h1 {
+        margin-top: 40px;
+    }
+
+    header nav li .serv {
+        margin-top: 8px;
+    }
+
+    #boxes .box {
+        float: none;
+        width: 100%;
+    }
+
+
+
+    #newsletter .button_1 {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+}

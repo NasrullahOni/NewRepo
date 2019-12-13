@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Order>
+@{
+    Layout = "_VendorLayout";
+   
+  
+
+}
+<style>
+    .drop{
+
+        margin-top:40px;
+    }
+
+   
+    .serialTable {
+        counter-reset: Serial;
+    }
+
+    .serialTable {
+        border-collapse: separate;
+    }
+
+        .serialTable tr td:first-child:before {
+            counter-increment: Serial;
+            content: counter(Serial);
+        }
+
+</style>
+
+<div class="drop container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class=" serialTable table table-striped table-bordered table-hover" id="table">
+                <thead>
+                    <tr>
+                       <th>S/N</th>
+                        <th>Food</th>
+                        <th>OrderedByMe</th>
+                        <th>StaffName</th>
+                        <th>Vendor Name</th>
+                        <th>StaffId</th>
+                        <th>Staff Department</th>
+                        <th>Date</th>
+                        <th>Accept</th>
+                        <th>AppendButton</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    @foreach (var vend in Model)
+                    {
+                        string date = vend.Date.ToString();
+                        var split = date.Split(" ");
+                        var actualdate = split[0];
+
+                        <tr>
+                            <td></td>
+                            <td>@vend.Food</td>
+                            <td>@vend.OrderedByMe </td>
+                            <td>@vend.StaffName </td>
+                            <td>@vend.VendorName </td>
+                            <td>@vend.StaffId </td>
+                            <td>@vend.StaffDepartment </td>
+                            <td>@actualdate </td>
+                            <td> @vend.Accepted</td>
+
+                            <td>
+                                <button id="bok">@Html.ActionLink("ACCEPT", "AcceptOrder", new { id = vend.OrderId })</button>
+                                <button id="rev"> @Html.ActionLink("Revert", "RevertOrder", new { id = vend.OrderId })</button>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+
+            </table>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#table').dataTable();
+        });
+
+
+</script>
+

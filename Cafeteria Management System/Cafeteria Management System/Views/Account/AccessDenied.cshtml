@@ -1,0 +1,96 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+    <html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <style>
+            body {
+                background: url("../../img/accessDenied.jpg")
+            }
+
+            .den {
+                margin-top: 90px;
+                width: 800px;
+                height: 400px;
+                background: white;
+                margin-left: 25%;
+                border-style: solid;
+                border-color: bisque;
+            }
+
+                .den #h h5 {
+                    font-size: 50px;
+                    font-family: monospace;
+                    color: red;
+                    text-align: center;
+                    margin-bottom: 9px;
+                }
+
+                .den img {
+                    width: 30%;
+                    height: 70%;
+                    margin-top: 15px;
+                    margin-left: 30%
+                }
+
+                .den #h {
+                    line-height: 25px;
+                    padding-top: 30px;
+                }
+
+            .den {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+            }
+        </style>
+
+        <div class="den">
+            <img src="../../img\padlock.jpg" />
+
+            <div id="h">
+                <h5>Whoops !!!</h5><br>
+                <p>
+                    The URL is Valid but you are not authorised
+                    for this content. Please Contact CyberFoods Administrator.
+                    <br>
+                    <br>
+                    You are currently Signed in as:
+                    <br>
+                  <a  style="text-decoration:none"class=" btn-link"asp-controller="Account" asp-action="Logout">  Sign in as a different User</a>
+                </p>
+            </div>
+            <div>
+                <i style="color:lightgreen" class="fa fa-arrow-left"></i><span><a style="text-decoration:none" class="btn-link" asp-controller="Home" asp-action="Index">Go back to Site</a></span>
+            </div>
+
+        </div>
+
+
+        <script>
+
+            function preventBack() {
+                window.history.forward();
+            
+            
+            }
+            setTimeout("preventBack()", 0);
+
+            //window.onunload = function () { null}
+
+            window.onbeforeunload = function () {
+
+                return "You wont be able to come back to this page once you leave"
+            }
+
+
+        </script>
+
+    </body>
+</html>

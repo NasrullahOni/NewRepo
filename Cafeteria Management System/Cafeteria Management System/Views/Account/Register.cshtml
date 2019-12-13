@@ -1,0 +1,174 @@
+﻿@model RegisterViewModel
+@inject IVendorRepo vend
+@inject IAppUser  appUse
+@Html.Raw(TempData["Success"])
+@{
+    TempData["Title"] = "Register";
+    Layout = "_AdminLayout";
+
+     var des = await appUse.GetUser();
+  
+
+}
+
+
+<style>
+    #register {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+</style>
+
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Register<small style="padding-left:4px">Manage Users</small></h1>
+            </div>
+            <div class="col-md-2">
+                @*<div class="dropdown create">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Create Content
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a type="button" data-toggle="modal" data-target="#addPage">Add Page</a></li>
+                        <li><a href="#">Add Post</a></li>
+                        <li><a href="#">Add User</a></li>
+                    </ul>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">Posts</li>
+        </ol>
+    </div>
+</section>
+
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="index.html" class="list-group-item active main-color-bg">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+                    </a>
+                    <a asp-action="GetUsers" asp-controller="Admin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> GetUsers</a>
+                
+                   
+                </div>
+
+                
+            </div>
+            <div class="col-md-9">
+                <!-- Website Overview -->
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <h3 class="panel-title">User Register</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <h4 style="text-align:center;font-size:40px;" id="register"> Register Users </h4>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-controller="Acount" asp-action="Register" method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="StaffId"></label>
+                                        <input asp-for="StaffId" class="form-control small" />
+                                        <span asp-validation-for="StaffId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="StaffName"></label>
+                                        <input asp-for="StaffName" class="form-control small" />
+                                        <span asp-validation-for="StaffName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input asp-for="Password" class="form-control" />
+                                        <span style="opacity:0.6"> 10 characters maximum. 3 unique characters</span>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="ConfirmPassword"></label>
+                                        <input asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label asp-for="EMail"></label>
+                                        <input asp-for="EMail" class="form-control" />
+                                        <span asp-validation-for="EMail" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Department"></label>
+                                        @Html.DropDownListFor(x => x.Department, new SelectList(des.Distinct(), "Department", "Department"), "Select Department", new { @class = "form-control font-weight-bold", @id = "Department", @required = true })
+                                    </div>
+                                        <button type="submit" class="btn btn-primary">Register</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modals -->
+<!-- Add Page -->
+<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Page</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Page Title</label>
+                        <input type="text" class="form-control" placeholder="Page Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Body</label>
+                        <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Published
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Tags</label>
+                        <input type="text" class="form-control" placeholder="Add Some Tags...">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <input type="text" class="form-control" placeholder="Add Meta Description...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

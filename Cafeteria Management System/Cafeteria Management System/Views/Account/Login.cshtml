@@ -1,0 +1,61 @@
+﻿@model LoginModel
+
+@{ 
+    Layout = null;
+}
+
+<style>
+    .border{
+
+        border-radius:4px;
+    }
+
+</style>
+
+<html>
+<head>
+    <title>Login Form Design</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Login.css">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Tangerine">
+</head>
+    <body>
+        <div style="line-height:5px">
+       
+           <h3 class="text-center  text-capitalize " style="font-family:Tangerine; color:saddlebrown;font-style:oblique; font-size:100px"> Cafeteria Management System <img style="height:30px;width:30px; border-radius:20px"  src="~/img/test.jpg"/></h3>
+        </div>
+        
+        <div class="loginbox" style="height:500px; top:60%">
+            <img src="~/img/Eba.jpg" class="avatar">
+            <h1 style="font-family:monospace">Login Here</h1>
+            <form asp-action="Login" asp-controller="Account" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <label asp-for="EmailAdrress"> E-MailAddress</label>
+                <input class="border" asp-for="EmailAdrress" type="text" placeholder="Enter E-Mail">
+
+
+                <label asp-for="Password"> Password</label>
+                <input class="border" asp-for="Password" type="password" placeholder="Enter Password">
+
+               @*<div class="form-group">
+                    <div class="custom-checkbox">
+                        <label asp-for="RememberMe">
+                            <input class="border"   asp-for="RememberMe" name="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+
+                        </label>
+                    </div>
+                </div>*@
+
+
+                <button style="margin-left:20%; margin-top:20px" type="submit" class="btn  btn-outline-success">Login</button>
+                <div>
+                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
+                </div>
+            </form>
+
+        </div>
+
+    </body>
+</html>

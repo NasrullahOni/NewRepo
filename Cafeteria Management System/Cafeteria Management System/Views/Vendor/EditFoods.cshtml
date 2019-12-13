@@ -1,0 +1,52 @@
+﻿@model  Foods
+
+@{ 
+    Layout = "_VendorLayout";
+}
+<style>
+.drop{
+    margin-top:40px;
+
+}
+
+</style>
+
+<div class="container drop">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-controller="Vendor" asp-action="UpdateFoods" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="@Model.Id"></label>
+                    <input asp-for="@Model.Id" class="form-control small" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Food"></label>
+                    <input asp-for="@Model.Food" class="form-control small" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Type"></label>
+                    <input asp-for="@Model.Type" class="form-control small" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.VendorId"></label>
+                    <input hidden asp-for="@Model.VendorId" class="form-control small" />
+
+                </div>
+
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-primary"
+                           style="width:auto" />
+                    <a asp-action="GetFoods" asp-controller="Vendor" class="btn btn-primary" style="width:auto">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        </div>
+
